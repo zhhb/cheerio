@@ -41,11 +41,17 @@ exports.food = [
 
 exports.inputs = [
   '<select id="one"><option value="option_not_selected">Option not selected</option><option value="option_selected" selected>Option selected</option></select>',
+  '<select id="one-valueless"><option>Option not selected</option><option selected>Option selected</option></select>',
+  '<select id="one-html-entity"><option>Option not selected</option><option selected>Option &lt;selected&gt;</option></select>',
+  '<select id="one-nested"><option>Option not selected</option><option selected>Option <span>selected</span></option></select>',
   '<input type="text" value="input_text" />',
   '<input type="checkbox" name="checkbox_off" value="off" /><input type="checkbox" name="checkbox_on" value="on" checked />',
+  '<input type="checkbox" name="checkbox_valueless" />',
   '<input type="radio" value="off" name="radio" /><input type="radio" name="radio" value="on" checked />',
   '<input type="radio" value="off" name="radio[brackets]" /><input type="radio" name="radio[brackets]" value="on" checked />',
-  '<select id="multi" multiple><option value="1">1</option><option value="2" selected>2</option><option value="3" selected>3</option><option value="4">4</option></select>'
+  '<input type="radio" name="radio_valueless" />',
+  '<select id="multi" multiple><option value="1">1</option><option value="2" selected>2</option><option value="3" selected>3</option><option value="4">4</option></select>',
+  '<select id="multi-valueless" multiple><option>1</option><option selected>2</option><option selected>3</option><option>4</option></select>'
 ].join('');
 
 exports.text = [
@@ -61,5 +67,6 @@ exports.forms = [
   '<form id="select"><select name="fruit"><option value="Apple">Apple</option><option value="Orange" selected>Orange</option></select></form>',
   '<form id="unnamed"><input type="text" name="fruit" value="Apple" /><input type="text" value="Carrot" /></form>',
   '<form id="multiple"><select name="fruit" multiple><option value="Apple" selected>Apple</option><option value="Orange" selected>Orange</option><option value="Carrot">Carrot</option></select></form>',
-  '<form id="textarea"><textarea name="fruits">Apple\nOrange</textarea></form>'
+  '<form id="textarea"><textarea name="fruits">Apple\nOrange</textarea></form>',
+  '<form id="spaces"><input type="text" name="fruit" value="Blood orange" /></form>'
 ].join('');

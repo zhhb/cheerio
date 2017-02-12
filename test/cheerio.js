@@ -1,10 +1,12 @@
 var expect = require('expect.js'),
-    _ = require('lodash'),
     htmlparser2 = require('htmlparser2'),
     $ = require('../'),
     fixtures = require('./fixtures'),
     fruits = fixtures.fruits,
-    food = fixtures.food;
+    food = fixtures.food,
+    _ = {
+      filter: require('lodash/filter')
+    };
 
 // HTML
 var script = '<script src="script.js" type="text/javascript"></script>',
@@ -105,8 +107,8 @@ describe('cheerio', function() {
 
   it('should select only elements inside given context (Issue #193)', function() {
     var q = $.load(food),
-        fruits = q('#fruits'),
-        fruitElements = q('li', fruits);
+        $fruits = q('#fruits'),
+        fruitElements = q('li', $fruits);
 
     expect(fruitElements).to.have.length(3);
   });
@@ -225,6 +227,18 @@ describe('cheerio', function() {
     expect($empty.find).to.be($.prototype.find);
     expect($empty.children).to.be($.prototype.children);
     expect($empty.each).to.be($.prototype.each);
+  });
+
+  it('should set html(number) as a string', function() {
+    var $elem = $('<div>');
+    $elem.html(123);
+    expect(typeof $elem.text()).to.equal('string');
+  });
+
+  it('should set text(number) as a string', function() {
+    var $elem = $('<div>');
+    $elem.text(123);
+    expect(typeof $elem.text()).to.equal('string');
   });
 
   describe('.load', function() {
